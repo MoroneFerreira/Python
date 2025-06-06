@@ -175,17 +175,62 @@ print(f'A média ponderada dos valores é igual a {ajustar_resultado(media_ponde
 '''
 # %%
 #Exercício 1
+#1 Crie uma variável chamada “frase” e atribua a ela uma string de sua escolha. Em seguida, imprima a frase na tela.
+
 frase = "Olá, Mundo!"
 print(frase)
 # %%
 #Exercício 2
+#2 Crie um código que solicite uma frase e depois imprima a frase na tela.
+
 frase = input("Escreva uma frase")
 print(frase)
 # %%
 #Exercício 3
+#3 Crie um código que solicite uma frase à pessoa usuária e imprima a mesma frase digitada mas com todas as letras maiúsculas.
+
 frase = input("Escreva uma frase")
 print(str.upper(frase))
 # %%
 #Exercício 4
+#4 Crie um código que solicite uma frase à pessoa usuária e imprima a mesma frase digitada mas com todas as letras minúsculas.
+
 frase = input("Escreva uma frase")
-print(str.upper(frase))
+print(str.lower(frase))
+# %%
+#Exercício 5
+#5 Crie uma variável chamada “frase” e atribua a ela uma string de sua escolha. Em seguida, imprima a frase sem espaços em branco no início e no fim.
+
+frase = "   Olá! Estou aprendendo Python para Ciência de Dados "
+print(str.strip(frase))
+# %%
+#Exercício 6
+#6 Crie um código que solicite uma frase à pessoa usuária e imprima a mesma frase sem espaços em branco no início e no fim.
+
+frase = input("Escreva uma frase")
+print(str(frase).strip())
+# %%
+#Exercício 7
+#7 Crie um código que solicite uma frase à pessoa usuária e imprima a mesma frase sem espaços em branco no início e no fim e em letras minúsculas.
+frase = input("Escreva uma frase")
+print(str(frase).strip().lower())
+
+# %%
+#Exercício 8
+#8 Crie um código que solicite uma frase à pessoa usuária e imprima a mesma frase com todas as vogais “e” trocadas pela letra “f”.
+
+frase = input("Escreva uma frase")
+print(str(frase).replace('e','f').replace('E','f'))
+
+#%%
+#Exercício 9
+#9 Crie um código que solicite uma frase à pessoa usuária e imprima a mesma frase com todas as vogais “a” trocadas pela caractere “@”.
+frase = input("Escreva uma frase")
+print(str(frase).replace('a','@').replace('à','@').replace('á','@').replace('â','@').replace('ã','@'))
+
+#%%
+#Exercício 10
+#10 Crie um código que solicite uma frase à pessoa usuária e imprima a mesma frase com todas as consoantes “s” trocadas pelo caractere “$”.
+frase = input("Escreva uma frase")
+print(str(frase).replace('s','$').replace('S','$'))
+# %%
