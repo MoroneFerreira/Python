@@ -159,4 +159,33 @@ media_ponderada = ((valores[0]*pesos[0])+(valores[1]*pesos[1])+(valores[2]*pesos
 print(f'A média ponderada dos valores é igual a {ajustar_resultado(media_ponderada)}')
 
 # %%
-
+#Exercícios de texto
+##Editando textos
+'''
+1 Crie uma variável chamada “frase” e atribua a ela uma string de sua escolha. Em seguida, imprima a frase na tela.
+2 Crie um código que solicite uma frase e depois imprima a frase na tela.
+3 Crie um código que solicite uma frase à pessoa usuária e imprima a mesma frase digitada mas com todas as letras maiúsculas.
+4 Crie um código que solicite uma frase à pessoa usuária e imprima a mesma frase digitada mas com todas as letras minúsculas.
+5 Crie uma variável chamada “frase” e atribua a ela uma string de sua escolha. Em seguida, imprima a frase sem espaços em branco no início e no fim.
+6 Crie um código que solicite uma frase à pessoa usuária e imprima a mesma frase sem espaços em branco no início e no fim.
+7 Crie um código que solicite uma frase à pessoa usuária e imprima a mesma frase sem espaços em branco no início e no fim e em letras minúsculas.
+8 Crie um código que solicite uma frase à pessoa usuária e imprima a mesma frase com todas as vogais “e” trocadas pela letra “f”.
+9 Crie um código que solicite uma frase à pessoa usuária e imprima a mesma frase com todas as vogais “a” trocadas pela caractere “@”.
+10 Crie um código que solicite uma frase à pessoa usuária e imprima a mesma frase com todas as consoantes “s” trocadas pelo caractere “$”.
+'''
+# %%
+#Exercício 1
+frase = "Olá, Mundo!"
+print(frase)
+# %%
+#Exercício 2
+frase = input("Escreva uma frase")
+print(frase)
+# %%
+#Exercício 3
+frase = input("Escreva uma frase")
+print(str.upper(frase))
+# %%
+#Exercício 4
+frase = input("Escreva uma frase")
+print(str.upper(frase))
