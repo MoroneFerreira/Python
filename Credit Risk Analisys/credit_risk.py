@@ -55,10 +55,22 @@ grafico.show()
 
 #Por fim, acredito que a melhor forma seja substituir os valores negativos com a média das idades, tendenciando o modelo para o centro.
 media_idades = df['age'][df['age']>=0].mean()
-df.loc[df['age']<=0] = media_idades
+df.loc[df['age']<=0, 'age'] = media_idades
 # %%
 #Checando se os valores negativos foram ajustados
 df[df['age']<=0]
 #%%
-#teste
+#Checando valores NAN
+df.isnull().sum()
+# %%
+#Filtrando valores null
+df.loc[pd.isnull(df['age'])]
+# %%
+#Preenchendo os valores NAN com a média de idades
+df['age'] = df['age'].fillna(df['age'].mean())
+# %%
+#Checando se ainda existem valores nulos:
+df.isnull().sum()
+
+
 # %%
