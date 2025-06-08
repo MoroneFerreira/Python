@@ -72,5 +72,34 @@ df['age'] = df['age'].fillna(df['age'].mean())
 #Checando se ainda existem valores nulos:
 df.isnull().sum()
 
+#%%
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
 
 # %%
+#dividindo registros de treino e teste
+#Vamos desconsiderar o ID por ser irrelevante nesta análise
+X = df.drop(columns=['default','clientid'])
+y = df['default']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=42, test_size=0.2)
+
+# %%
+#gerando um primeiro modelo apenas com o random_state
+classificador = RandomForestClassifier(random_state=42)
+classificador.fit(X_train, y_train)
+
+# %%
+#Gerando predição
+classificador.predict(X_test)
+# %%
+#Entendendo as métricas
+y_pred = classificador.predict(X_test)
+print(classification_report(y_test, y_pred))
+#Nota-se que o Recall (quantidade ponderada de acertos reais) pode ser melhorado para os clientes que não pagaram o emprestimo.
+
+# %%
+#Por se tratar de um modelo de crédito, talvez seja mais interessante ajustar o Threshold, onde teremos uma abordagem mais conservadora.
+#Com o ajuste do Threshold, tendencio o modelo a acusar mais clientes que não pagariam e negar o crédito (mesmo errando alguns), do que ganhar em precisão e deixar alguns pováveis inadimplentes passarem
+
