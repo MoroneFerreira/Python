@@ -76,6 +76,8 @@ df.isnull().sum()
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
+from sklearn.metrics import precision_recall_curve
+
 
 # %%
 #dividindo registros de treino e teste
@@ -101,5 +103,41 @@ print(classification_report(y_test, y_pred))
 
 # %%
 #Por se tratar de um modelo de crédito, talvez seja mais interessante ajustar o Threshold, onde teremos uma abordagem mais conservadora.
-#Com o ajuste do Threshold, tendencio o modelo a acusar mais clientes que não pagariam e negar o crédito (mesmo errando alguns), do que ganhar em precisão e deixar alguns pováveis inadimplentes passarem
+#Com o ajuste do Threshold, tendencio o modelo a acusar mais clientes que não pagariam e negar o crédito (mesmo errando alguns), do que ganhar em precisão e deixar alguns pováveis inadimplentes passarem.
 
+#Pegando as probabilidades de inadimplência:
+
+y_scores = classificador.predict_proba(X_test)[:, 1]
+
+# %%
+#Seprarando os dados de Precisão, Recall e Thresholds
+precision, recall, thresholds = precision_recall_curve(y_test, y_scores)
+#%%
+#plotando um gráfico para entender melhor a curva
+plt.figure(figsize=(10, 6))
+plt.plot(thresholds, precision[:-1], label='Precisão', color='blue')
+plt.plot(thresholds, recall[:-1], label='Recall', color='green')
+plt.xlabel('Threshold')
+plt.ylabel('Valor')
+plt.title('Precisão e Recall em função do Threshold')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+#Com essa análise, entendemos que o ponto em que a precisão e sensibilidade de cruzam é com um Threshold de 0.4
+#Quero optar por sensibilizar o modelo, ou seja, abrir mão de algumas aprovações para evitar prejuízo por inadimplência, sem perder muita precisão.
+#Dado o gráfico, vou seguir com um Threshold de 0.35, mantendo tanto a precisão como o recall acima de 80% e abaixo dos 100%*
+# %%
+#Ajustando a previsao com base no Threshold
+threshold = 0.35
+y_pred_threshold = (y_scores >= threshold).astype(int)
+
+# %%
+#Cria uma nova predição de y considerando as métricas do modelo de não pagamento
+#A regra entre parênteses retorna uma classificão booleana de y_scores
+#O astype(int) transforma True = 1 e False = 0, retornando os valores na escala de 0 e 1 conforme base de atributos
+y_pred_threshold = (y_scores >= threshold).astype(int)
+
+# %%
+#obtendo métricas do modelo com Threshold aplicado
+print(classification_report(y_test, y_pred_threshold))
