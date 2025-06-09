@@ -1,3 +1,6 @@
+Autor: Morone Paula Ferreira
+LinkedIn: https://www.linkedin.com/in/moroneferreira/
+
 # 🧠 Classificador de Risco de Crédito com Ajuste de Threshold
 
 Este projeto de ciência de dados tem como objetivo construir um modelo preditivo para **identificar clientes com risco de inadimplência**, usando uma base de dados fictícia de crédito. A abordagem inclui **tratamento de dados, análise exploratória, treinamento de modelo supervisionado, avaliação e ajuste de threshold** para obter um modelo mais conservador — ideal para cenários de concessão de crédito.
